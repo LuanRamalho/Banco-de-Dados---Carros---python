@@ -8,6 +8,7 @@ class CarRegistrationApp:
         self.root = root
         self.root.title("Cadastro de Carro")
         self.root.geometry("600x600")
+        self.root.config(bg="#00FF72")
         
         # Carregar dados se o arquivo existir
         if os.path.exists('cars.json'):
@@ -23,41 +24,41 @@ class CarRegistrationApp:
 
     def create_widgets(self):
         # Frame para o formulário de cadastro
-        frame = tk.Frame(self.root)
+        frame = tk.Frame(self.root, bg="#00FF72")
         frame.pack(pady=10)
 
-        tk.Label(frame, text="Ano de Fabricação:").grid(row=0, column=0, padx=10, pady=5)
+        tk.Label(frame, text="Ano de Fabricação:", bg="#00FF72").grid(row=0, column=0, padx=10, pady=5)
         self.year_entry = tk.Entry(frame)
         self.year_entry.grid(row=0, column=1)
 
-        tk.Label(frame, text="Fabricante:").grid(row=1, column=0, padx=10, pady=5)
+        tk.Label(frame, text="Fabricante:", bg="#00FF72").grid(row=1, column=0, padx=10, pady=5)
         self.manufacturer_entry = tk.Entry(frame)
         self.manufacturer_entry.grid(row=1, column=1)
 
-        tk.Label(frame, text="Tipo de Combustível:").grid(row=2, column=0, padx=10, pady=5)
+        tk.Label(frame, text="Tipo de Combustível:", bg="#00FF72").grid(row=2, column=0, padx=10, pady=5)
         self.type_combobox = ttk.Combobox(frame, values=["Gasolina", "Etanol", "Flex", "Híbrido", "Elétrico", "GNV"])
         self.type_combobox.grid(row=2, column=1)
 
-        tk.Label(frame, text="Placa do Carro:").grid(row=3, column=0, padx=10, pady=5)
+        tk.Label(frame, text="Placa do Carro:", bg="#00FF72").grid(row=3, column=0, padx=10, pady=5)
         self.plate_entry = tk.Entry(frame)
         self.plate_entry.grid(row=3, column=1)
 
-        tk.Label(frame, text="Cor do Carro:").grid(row=4, column=0, padx=10, pady=5)
+        tk.Label(frame, text="Cor do Carro:", bg="#00FF72").grid(row=4, column=0, padx=10, pady=5)
         self.color_combobox = ttk.Combobox(frame, values=["Branco", "Cinza", "Preto", "Azul", "Amarelo", "Rosa", "Verde", "Vermelho", "Roxo", "Bege", "Laranja", "Ciano", "Marrom"])
         self.color_combobox.grid(row=4, column=1)
 
-        self.save_button = tk.Button(frame, text="Salvar Dados", command=self.save_data)
+        self.save_button = tk.Button(frame, text="Salvar Dados", command=self.save_data, font=("Arial",12,"bold"), bg="#590052", fg="#ffffff")
         self.save_button.grid(row=5, columnspan=2, pady=10)
 
         # Frame para busca
-        search_frame = tk.Frame(self.root)
+        search_frame = tk.Frame(self.root, bg="#00FF72")
         search_frame.pack(pady=10)
 
-        tk.Label(search_frame, text="Buscar:").grid(row=0, column=0, padx=10, pady=5)
+        tk.Label(search_frame, text="Buscar:", bg="#00FF72").grid(row=0, column=0, padx=10, pady=5)
         self.search_entry = tk.Entry(search_frame)
         self.search_entry.grid(row=0, column=1, padx=5)
 
-        self.search_button = tk.Button(search_frame, text="Buscar", command=self.search_data)
+        self.search_button = tk.Button(search_frame, text="Buscar", command=self.search_data, font=("Arial",12,"bold"), bg="#00455B", fg="#ffffff")
         self.search_button.grid(row=0, column=2, padx=5)
 
         self.table = ttk.Treeview(self.root, columns=("year", "manufacturer", "type", "plate", "color"), show='headings')
@@ -71,10 +72,10 @@ class CarRegistrationApp:
         self.table.pack(fill=tk.BOTH, expand=True)
 
         # Botões de editar, salvar e excluir
-        self.edit_button = tk.Button(self.root, text="Editar", command=self.edit_data)
+        self.edit_button = tk.Button(self.root, text="Editar", command=self.edit_data, font=("Arial",12,"bold"), bg="#1F4801", fg="#ffffff")
         self.edit_button.pack(side=tk.LEFT, padx=10, pady=10)
 
-        self.delete_button = tk.Button(self.root, text="Excluir", command=self.delete_data)
+        self.delete_button = tk.Button(self.root, text="Excluir", command=self.delete_data, font=("Arial",12,"bold"), bg="#690000", fg="#ffffff")
         self.delete_button.pack(side=tk.LEFT, padx=10, pady=10)
 
     def load_table(self, cars=None):
